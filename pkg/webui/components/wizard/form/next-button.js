@@ -23,6 +23,8 @@ import Message from '@ttn-lw/lib/components/message'
 
 import PropTypes from '@ttn-lw/lib/prop-types'
 
+import style from './form.styl'
+
 const m = defineMessages({
   next: 'Next',
   complete: 'Complete',
@@ -48,14 +50,19 @@ const WizardNextButton = props => {
 
   return (
     <Button
+      className={style.button}
       type="submit"
       primary
       onClick={handleClick}
       disabled={disabled}
       busy={isSubmitting || isValidating}
     >
-      <Message content={nextMessage} />
-      {!isLastStep && <Button.Icon icon="keyboard_arrow_right" type="right" />}
+      <Message className={style.message} content={nextMessage} />
+      <Button.Icon
+        className={style.iconNext}
+        icon={isLastStep ? 'done' : 'keyboard_arrow_right'}
+        type="right"
+      />
     </Button>
   )
 }

@@ -23,6 +23,8 @@ import Message from '@ttn-lw/lib/components/message'
 
 import PropTypes from '@ttn-lw/lib/prop-types'
 
+import style from './form.styl'
+
 const m = defineMessages({
   prev: 'Previous',
 })
@@ -49,9 +51,9 @@ const WizardPrevButton = props => {
   }
 
   return (
-    <Button secondary onClick={handlePrevStep} type="button">
+    <Button className={style.button} secondary onClick={handlePrevStep} type="button">
       <Button.Icon icon="keyboard_arrow_left" type="left" />
-      <Message content={prevMessage} />
+      <Message className={style.message} content={prevMessage} />
     </Button>
   )
 }
