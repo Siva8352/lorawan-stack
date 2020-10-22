@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import axios from 'axios'
+import { cloneDeep, get } from 'lodash'
 
 import { URI_PREFIX_STACK_COMPONENT_MAP } from '../util/constants'
 import EventHandler from '../util/events'
@@ -112,7 +113,16 @@ class Http {
       return response
     } catch (err) {
       if ('response' in err && err.response && 'data' in err.response) {
-        throw err.response.data
+        const error = cloneDeep(err.response.data)
+        error.request_details = {
+          url: get(err, 'response.config.url'),
+          method: get(err, 'response.config.method'),
+          params: get(err, 'response.config.params'),
+          base_url: get(err, 'response.config.baseURL'),
+          stack_component: parsedComponent,
+        }
+
+        throw error
       } else {
         throw err
       }
@@ -141,7 +151,7 @@ class Http {
    * Extracts The Things Stack component abbreviation from the endpoint.
    *
    * @param {string} endpoint - The endpoint got for a request method.
-   * @returns {string} One of {is|as|gs|js|ns}.
+   * @returns {string} One of {is|as|gs|js|ns|edtc|qrg|gcs}.
    */
   _parseStackComponent(endpoint) {
     try {
