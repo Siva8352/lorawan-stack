@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Network Server does not retry rejected `NewChannelReq` data rate ranges or rejected `DLChannelReq` frequencies anymore.
 - Functionality to allow admin users to list all organizations in the Console.
 - Downlink count for end devices in the Console.
+- Navigation to errored step in the end device wizard in the Console.
 
 ### Changed
 
