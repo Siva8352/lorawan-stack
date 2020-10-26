@@ -151,7 +151,7 @@ class Http {
    * Extracts The Things Stack component abbreviation from the endpoint.
    *
    * @param {string} endpoint - The endpoint got for a request method.
-   * @returns {string} One of {is|as|gs|js|ns|edtc|qrg|gcs}.
+   * @returns {string} The stack component abbreviation.
    */
   _parseStackComponent(endpoint) {
     try {
