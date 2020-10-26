@@ -117,7 +117,6 @@ class Http {
         error.request_details = {
           url: get(err, 'response.config.url'),
           method: get(err, 'response.config.method'),
-          params: get(err, 'response.config.params'),
           base_url: get(err, 'response.config.baseURL'),
           stack_component: parsedComponent,
         }
