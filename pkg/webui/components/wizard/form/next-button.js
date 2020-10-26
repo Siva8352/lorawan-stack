@@ -57,12 +57,8 @@ const WizardNextButton = props => {
       disabled={disabled}
       busy={isSubmitting || isValidating}
     >
-      <Message className={style.message} content={nextMessage} />
-      <Button.Icon
-        className={style.iconNext}
-        icon={isLastStep ? 'done' : 'keyboard_arrow_right'}
-        type="right"
-      />
+      <Message content={nextMessage} />
+      <Button.Icon icon={isLastStep ? '' : 'keyboard_arrow_right'} type="right" />
     </Button>
   )
 }
